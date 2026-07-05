@@ -5,8 +5,50 @@ const App = () => {
   //States
   const [array, setArray] = useState([]);
   const [arraySize, setArraySize] = useState(25);
-  const [algorithm, setAlgorithm] = useState("bubble");
+  const [algorithm, setAlgorithm] = useState("Bubble sort");
+  const [hoveredAlgorithm, setHoveredAlgorithm] = useState("Bubble sort");
   const [isSorting, setIsSorting] = useState(false);
+
+  //Constants
+  const algorithmInfo = {
+    "Bubble Sort": {
+      title: "Bubble Sort",
+      image: "🫧",
+      color: "#f3805c",
+    },
+
+    "Selection Sort": {
+      title: "Selection Sort",
+      image: "🎯",
+      color: "#ff6b6b",
+    },
+
+    "Insertion Sort": {
+      title: "Insertion Sort",
+      image: "📥",
+      color: "#5dade2",
+    },
+
+    "Merge Sort": {
+      title: "Merge Sort",
+      image: "🔀",
+      color: "#f4d03f",
+    },
+
+    "Quick Sort": {
+      title: "Quick Sort",
+      image: "⚡",
+      color: "#52be80",
+    },
+
+    "Heap Sort": {
+      title: "Heap Sort",
+      image: "🌳",
+      color: "#9b59b6",
+    },
+  };
+
+  const currentAlgorithm = algorithmInfo[hoveredAlgorithm];
 
   //Event Handlers
   const generateArray = () => {
@@ -40,47 +82,63 @@ const App = () => {
       </header>
 
       <section className="home-content">
-        <h1 className="title">
-          Sorting
-          <br />
-          Algorithm
-          <br />
-          Visualizer
-        </h1>
+        <section className="left-panel">
+          <h1 className="title">
+            Sorting
+            <br />
+            Algorithm
+            <br />
+            Visualizer
+          </h1>
 
-        <section className="array-card">
-          <h2>Array Size</h2>
-          <p>Enter a number between 5 and 100</p>
-
-          <div className="input-row">
-            <input
-              type="number"
-              min="5"
-              max="100"
-              value={arraySize}
-              onChange={(event) => setArraySize(event.target.value)}
-            />
-            <button onClick={generateArray}>GO</button>
-          </div>
+          <section className="selected-card">
+            <div className="algorithm-icon">{currentAlgorithm?.image}</div>
+            <h2>{currentAlgorithm?.title}</h2>
+          </section>
         </section>
 
-        <section className="algorithm-list">
-          {[
-            "Bubble Sort",
-            "Selection Sort",
-            "Insertion Sort",
-            "Merge Sort",
-            "Quick Sort",
-            "Heap Sort",
-          ].map((name) => (
-            <button
-              key={name}
-              className="algorithm-button"
-              onClick={() => setAlgorithm(name)}
-            >
-              {name}
-            </button>
-          ))}
+        <section className="right-panel">
+          <section className="array-card">
+            <h2>Array Size</h2>
+            <p>Enter a number between 5 and 100</p>
+
+            <div className="input-row">
+              <input
+                type="number"
+                min="5"
+                max="100"
+                value={arraySize}
+                onChange={(event) => setArraySize(event.target.value)}
+              />
+              <button onClick={generateArray}>GO</button>
+            </div>
+          </section>
+
+          <section className="algorithm-list">
+            {[
+              "Bubble Sort",
+              "Selection Sort",
+              "Insertion Sort",
+              "Merge Sort",
+              "Quick Sort",
+              "Heap Sort",
+            ].map((name) => (
+              <button
+                key={name}
+                className={`algorithm-button ${name
+                  .toLowerCase()
+                  .replace(" ", "-")} ${algorithm === name ? "active" : ""}`}
+                onMouseEnter={() => setHoveredAlgorithm(name)}
+                onMouseLeave={() => setHoveredAlgorithm(algorithm)}
+                onClick={() => {
+                  setAlgorithm(name);
+                  setHoveredAlgorithm(name);
+                }}
+              >
+                {name}
+              </button>
+            ))}
+          </section>
         </section>
       </section>
     </main>
