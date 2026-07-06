@@ -6,7 +6,7 @@ const App = () => {
   const [array, setArray] = useState([]);
   const [arraySize, setArraySize] = useState(25);
   const [algorithm, setAlgorithm] = useState("Bubble sort");
-  const [hoveredAlgorithm, setHoveredAlgorithm] = useState("Bubble sort");
+  const [hoveredAlgorithm, setHoveredAlgorithm] = useState(null);
   const [isSorting, setIsSorting] = useState(false);
 
   //Constants
@@ -48,7 +48,9 @@ const App = () => {
     },
   };
 
-  const currentAlgorithm = algorithmInfo[hoveredAlgorithm];
+  const currentAlgorithm = hoveredAlgorithm
+    ? algorithmInfo[hoveredAlgorithm]
+    : null;
 
   //Event Handlers
   const generateArray = () => {
@@ -91,9 +93,29 @@ const App = () => {
             Visualizer
           </h1>
 
-          <section className="selected-card">
-            <div className="algorithm-icon">{currentAlgorithm?.image}</div>
-            <h2>{currentAlgorithm?.title}</h2>
+          <section
+            className="selected-card"
+            style={{
+              backgroundColor: currentAlgorithm?.color || "#FFD97D",
+            }}
+          >
+            {currentAlgorithm ? (
+              <>
+                <div className="algorithm-icon">{currentAlgorithm.image}</div>
+
+                <h2>{currentAlgorithm.title}</h2>
+              </>
+            ) : (
+              <>
+                <div className="algorithm-icon">⚙️</div>
+
+                <h2>
+                  Sorting
+                  <br />
+                  Algorithm
+                </h2>
+              </>
+            )}
           </section>
         </section>
 
