@@ -289,3 +289,31 @@ body {
 .array-bar.sorted {
   background: #52be80;
 }
+
+.speed-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.speed-button {
+  border: none;
+  background: white;
+  color: #f3805c;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 10px 22px;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+.speed-button.active {
+  background: #f3805c;
+  color: white;
+}
+
+.speed-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

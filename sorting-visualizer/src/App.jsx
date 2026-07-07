@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { algorithmInfo } from "./data/algorithms";
 import { bubbleSort } from "./algorithms/bubbleSort";
+import { selectionSort } from "./algorithms/selectionSort";
 import "./App.css";
 
 const App = () => {
@@ -13,6 +14,9 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
   const [activeIndices, setActiveIndices] = useState([]);
   const [sortedIndices, setSortedIndices] = useState([]);
+  const [animationSpeed, setAnimationSpeed] = useState(100);
+  const [speedLabel, setSpeedLabel] = useState("x1");
+  const animationSpeedRef = useRef(animationSpeed);
   const currentAlgorithm = hoveredAlgorithm
     ? algorithmInfo[hoveredAlgorithm]
     : null;
@@ -46,41 +50,44 @@ const App = () => {
   };
 
   const startSorting = async (targetArray = array) => {
-    if (algorithm !== "Bubble Sort") return;
+    if (isSorting) return;
+
+    let animations = [];
+
+    if (algorithm === "Bubble Sort") {
+      animations = bubbleSort(targetArray);
+    }
+
+    if (algorithm === "Selection Sort") {
+      animations = selectionSort(targetArray);
+    }
+
+    if (animations.length === 0) return;
 
     setIsSorting(true);
     setActiveIndices([]);
     setSortedIndices([]);
 
-    const animations = bubbleSort(targetArray);
-
-    console.log("array before sort:", targetArray);
-    console.log("animations:", animations);
-    console.log(
-      "swap count:",
-      animations.filter((step) => step.type === "swap").length,
-    );
-
     for (const step of animations) {
       if (step.type === "compare") {
         setActiveIndices(step.indices);
-        await sleep(50);
+        await sleep(animationSpeedRef.current);
       }
 
       if (step.type === "swap") {
         setArray([...step.array]);
-        await sleep(50);
+        await sleep(animationSpeedRef.current);
       }
 
       if (step.type === "reset") {
         setActiveIndices([]);
-        await sleep(50);
+        await sleep(animationSpeedRef.current / 2);
       }
 
       if (step.type === "sorted") {
         setActiveIndices([]);
         setSortedIndices((prev) => [...prev, step.index]);
-        await sleep(30);
+        await sleep(animationSpeedRef.current);
       }
     }
 
@@ -97,6 +104,12 @@ const App = () => {
     setActiveIndices([]);
     setCurrentPage("visualizer");
   };
+
+  const speedOptions = [
+    { label: "x1", value: 100 },
+    { label: "x2", value: 50 },
+    { label: "x3", value: 25 },
+  ];
 
   //HTML
   return (
@@ -216,7 +229,23 @@ const App = () => {
               {isSorting ? "Sorting" : "Start"}
             </button>
           </header>
-
+          <div className="speed-buttons">
+            {speedOptions.map((speed) => (
+              <button
+                key={speed.label}
+                className={`speed-button ${
+                  speedLabel === speed.label ? "active" : ""
+                }`}
+                onClick={() => {
+                  setAnimationSpeed(speed.value);
+                  setSpeedLabel(speed.label);
+                  animationSpeedRef.current = speed.value;
+                }}
+              >
+                {speed.label}
+              </button>
+            ))}
+          </div>
           <section className="bar-container">
             {array.map((item, index) => {
               const isActive = activeIndices.includes(index);
