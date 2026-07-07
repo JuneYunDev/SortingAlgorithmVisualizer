@@ -1,44 +1,44 @@
 export const bubbleSort = (array) => {
-  const animationSetps = [];
+  const animationStep = [];
   const sortingArray = [...array];
 
   for (let i = 0; i < sortingArray.length - 1; i++) {
     for (let j = 0; j < sortingArray.length - i - 1; j++) {
-      animationSetps.push({
+      animationStep.push({
         type: "compare",
         indices: [j, j + 1],
       });
 
-      if (sortingArray[j] > sortingArray[j + 1]) {
+      if (sortingArray[j].value > sortingArray[j + 1].value) {
         const current = sortingArray[j];
         const next = sortingArray[j + 1];
 
         sortingArray[j] = next;
         sortingArray[j + 1] = current;
 
-        animationSetps.push({
+        animationStep.push({
           type: "swap",
           indices: [j, j + 1],
           array: [...sortingArray],
         });
       }
 
-      animationSetps.push({
+      animationStep.push({
         type: "reset",
         indices: [j, j + 1],
       });
     }
 
-    animationSetps.push({
+    animationStep.push({
       type: "sorted",
       index: sortingArray.length - i - 1,
     });
   }
 
-  animationSetps.push({
+  animationStep.push({
     type: "sorted",
     index: 0,
   });
 
-  return animationSetps;
+  return animationStep;
 };

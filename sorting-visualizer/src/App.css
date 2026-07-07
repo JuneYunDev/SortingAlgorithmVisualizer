@@ -221,3 +221,71 @@ body {
   background: #9d4edd;
   color: white;
 }
+
+.app {
+  min-height: 100vh;
+}
+
+.visualizer-page {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding: 40px 80px;
+}
+
+.visualizer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.visualizer-header h1 {
+  color: #f3805c;
+  font-size: 48px;
+}
+
+.back-button,
+.start-button {
+  border: none;
+  background: #f3805c;
+  color: white;
+  padding: 14px 28px;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.bar-container {
+  height: 560px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  padding: 32px;
+  background: white;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.array-bar {
+  width: 24px;
+  min-width: 4px;
+  background: #686878;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  transition:
+    height 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.array-bar.active {
+  background: #f4d03f;
+}
+
+.array-bar.sorted {
+  background: #52be80;
+}
