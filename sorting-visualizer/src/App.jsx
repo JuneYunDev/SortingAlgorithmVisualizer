@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { algorithmInfo } from "./data/algorithms";
+import { bubbleSort } from "./algorithms/bubbleSort";
 import "./App.css";
 
 const App = () => {
@@ -8,45 +10,6 @@ const App = () => {
   const [algorithm, setAlgorithm] = useState("Bubble sort");
   const [hoveredAlgorithm, setHoveredAlgorithm] = useState(null);
   const [isSorting, setIsSorting] = useState(false);
-
-  //Constants
-  const algorithmInfo = {
-    "Bubble Sort": {
-      title: "Bubble Sort",
-      image: "🫧",
-      color: "#f3805c",
-    },
-
-    "Selection Sort": {
-      title: "Selection Sort",
-      image: "🎯",
-      color: "#ff6b6b",
-    },
-
-    "Insertion Sort": {
-      title: "Insertion Sort",
-      image: "📥",
-      color: "#5dade2",
-    },
-
-    "Merge Sort": {
-      title: "Merge Sort",
-      image: "🔀",
-      color: "#f4d03f",
-    },
-
-    "Quick Sort": {
-      title: "Quick Sort",
-      image: "⚡",
-      color: "#52be80",
-    },
-
-    "Heap Sort": {
-      title: "Heap Sort",
-      image: "🌳",
-      color: "#9b59b6",
-    },
-  };
 
   const currentAlgorithm = hoveredAlgorithm
     ? algorithmInfo[hoveredAlgorithm]
@@ -58,7 +21,7 @@ const App = () => {
 
     if (size < 5 || size > 100) {
       alert("Please enter a number between 5 and 100.");
-      return;
+      return null;
     }
 
     const newArray = [];
@@ -69,10 +32,22 @@ const App = () => {
     }
 
     setArray(newArray);
+    return newArray;
   };
 
-  const startSorting = () => {
-    console.log("Start Sorting");
+  const startSorting = (targetArray) => {
+    if (algorithm !== "Bubble Sort") return;
+
+    const animations = bubbleSort(targetArray);
+    console.log("Animations:", animations);
+  };
+
+  const handleGoClick = () => {
+    const newArray = generateArray();
+
+    if (!newArray) return;
+
+    startSorting(newArray);
   };
 
   //HTML
@@ -132,7 +107,7 @@ const App = () => {
                 value={arraySize}
                 onChange={(event) => setArraySize(event.target.value)}
               />
-              <button onClick={generateArray}>GO</button>
+              <button onClick={handleGoClick}>GO</button>
             </div>
           </section>
 
