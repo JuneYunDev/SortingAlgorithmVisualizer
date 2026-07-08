@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { algorithmInfo } from "./data/algorithms";
 import { bubbleSort } from "./algorithms/bubbleSort";
 import { selectionSort } from "./algorithms/selectionSort";
+import { insertionSort } from "./algorithms/insertionSort";
 import "./App.css";
 
 const App = () => {
@@ -60,6 +61,10 @@ const App = () => {
 
     if (algorithm === "Selection Sort") {
       animations = selectionSort(targetArray);
+    }
+
+    if (algorithm === "Insertion Sort") {
+      animations = insertionSort(targetArray);
     }
 
     if (animations.length === 0) return;
