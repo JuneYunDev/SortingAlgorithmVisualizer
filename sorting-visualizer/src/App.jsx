@@ -138,88 +138,79 @@ const App = () => {
           </header>
 
           <section className="home-content">
-            <section className="left-panel">
-              <h1 className="title">
-                Sorting
-                <br />
-                Algorithm
-                <br />
-                Visualizer
-              </h1>
+            <h1 className="title">
+              Sorting
+              <br />
+              Algorithm
+              <br />
+              Visualizer
+            </h1>
 
-              <section
-                className="selected-card"
-                style={{
-                  backgroundColor: currentAlgorithm?.color || "#FFD97D",
-                }}
-              >
-                {currentAlgorithm ? (
-                  <>
-                    <div className="algorithm-icon">
-                      {currentAlgorithm.image}
-                    </div>
+            <section
+              className="selected-card"
+              style={{
+                backgroundColor: currentAlgorithm?.color || "#FFD97D",
+              }}
+            >
+              {currentAlgorithm ? (
+                <>
+                  <div className="algorithm-icon">{currentAlgorithm.image}</div>
 
-                    <h2>{currentAlgorithm.title}</h2>
-                  </>
-                ) : (
-                  <>
-                    <div className="algorithm-icon">⚙️</div>
+                  <h2>{currentAlgorithm.title}</h2>
+                </>
+              ) : (
+                <>
+                  <div className="algorithm-icon">⚙️</div>
 
-                    <h2>
-                      Sorting
-                      <br />
-                      Algorithm
-                    </h2>
-                  </>
-                )}
-              </section>
+                  <h2>
+                    Sorting
+                    <br />
+                    Algorithm
+                  </h2>
+                </>
+              )}
             </section>
 
-            <section className="right-panel">
-              <section className="array-card">
-                <h2>Array Size</h2>
-                <p>Enter a number between 5 and 100</p>
+            <section className="array-card">
+              <h2>Array Size</h2>
+              <p>Enter a number between 5 and 100</p>
 
-                <div className="input-row">
-                  <input
-                    type="number"
-                    min="5"
-                    max="100"
-                    value={arraySize}
-                    onChange={(event) => setArraySize(event.target.value)}
-                  />
-                  <button onClick={handleGoClick}>GO</button>
-                </div>
-              </section>
+              <div className="input-row">
+                <input
+                  type="number"
+                  min="5"
+                  max="100"
+                  value={arraySize}
+                  onChange={(event) => setArraySize(event.target.value)}
+                />
+                <button onClick={handleGoClick}>GO</button>
+              </div>
+            </section>
 
-              <section className="algorithm-list">
-                {[
-                  "Bubble Sort",
-                  "Selection Sort",
-                  "Insertion Sort",
-                  "Merge Sort",
-                  "Quick Sort",
-                  "Heap Sort",
-                ].map((name) => (
-                  <button
-                    key={name}
-                    className={`algorithm-button ${name
-                      .toLowerCase()
-                      .replace(
-                        " ",
-                        "-",
-                      )} ${algorithm === name ? "active" : ""}`}
-                    onMouseEnter={() => setHoveredAlgorithm(name)}
-                    onMouseLeave={() => setHoveredAlgorithm(algorithm)}
-                    onClick={() => {
-                      setAlgorithm(name);
-                      setHoveredAlgorithm(name);
-                    }}
-                  >
-                    {name}
-                  </button>
-                ))}
-              </section>
+            <section className="algorithm-list">
+              {[
+                "Bubble Sort",
+                "Selection Sort",
+                "Insertion Sort",
+                "Merge Sort",
+                "Quick Sort",
+                "Heap Sort",
+              ].map((name) => (
+                <button
+                  key={name}
+                  className={`algorithm-button ${name
+                    .toLowerCase()
+                    .replace(" ", "-")} ${algorithm === name ? "active" : ""}`}
+                  onMouseEnter={() => setHoveredAlgorithm(name)}
+                  onMouseLeave={() => setHoveredAlgorithm(algorithm)}
+                  onClick={() => {
+                    setAlgorithm(name);
+                    setHoveredAlgorithm(name);
+                  }}
+                >
+                  {name}
+                </button>
+              ))}
             </section>
           </section>
         </section>
