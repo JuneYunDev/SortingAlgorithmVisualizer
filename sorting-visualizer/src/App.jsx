@@ -3,6 +3,7 @@ import { algorithmInfo } from "./data/algorithms";
 import { bubbleSort } from "./algorithms/bubbleSort";
 import { selectionSort } from "./algorithms/selectionSort";
 import { insertionSort } from "./algorithms/insertionSort";
+import { mergeSort } from "./algorithms/mergeSort";
 import "./App.css";
 
 const App = () => {
@@ -67,6 +68,10 @@ const App = () => {
       animations = insertionSort(targetArray);
     }
 
+    if (algorithm === "Merge Sort") {
+      animations = mergeSort(targetArray);
+    }
+
     if (animations.length === 0) return;
 
     setIsSorting(true);
@@ -92,6 +97,11 @@ const App = () => {
       if (step.type === "sorted") {
         setActiveIndices([]);
         setSortedIndices((prev) => [...prev, step.index]);
+        await sleep(animationSpeedRef.current);
+      }
+
+      if (step.type === "overwrite") {
+        setArray([...step.array]);
         await sleep(animationSpeedRef.current);
       }
     }

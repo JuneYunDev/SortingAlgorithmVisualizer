@@ -2,25 +2,25 @@ export const algorithmInfo = {
   "Bubble Sort": {
     title: "Bubble Sort",
     image: "🫧",
-    color: "#F3805C",
+    color: "#FF6B6B",
   },
 
   "Selection Sort": {
     title: "Selection Sort",
     image: "🎯",
-    color: "#FF6B6B",
+    color: "#f3805c",
   },
 
   "Insertion Sort": {
     title: "Insertion Sort",
     image: "📥",
-    color: "#5DADE2",
+    color: "#F4D03F",
   },
 
   "Merge Sort": {
     title: "Merge Sort",
     image: "🔀",
-    color: "#F4D03F",
+    color: "#6599c8",
   },
 
   "Quick Sort": {

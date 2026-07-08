@@ -10,7 +10,7 @@ body {
 
 .top-bar {
   height: 50px;
-  background: #676a74;
+  background: #33393d;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,16 +30,19 @@ body {
   margin: 0 auto;
   padding: 40px 80px;
 
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 180px;
 }
 
 .left-panel,
 .right-panel {
+  width: 700px;
+
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 50px;
 }
 
 .algorithm-list {
@@ -63,6 +66,7 @@ body {
   text-align: center;
   padding: 36px 70px 54px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.35);
+  width: 100%;
 }
 
 .array-card h2 {
@@ -91,7 +95,7 @@ body {
 .input-row button {
   width: 100px;
   border: none;
-  background: #686878;
+  background: #33393d;
   color: white;
   font-size: 32px;
   font-weight: bold;
@@ -142,7 +146,7 @@ body {
 }
 
 .algorithm-list {
-  width: 500px;
+  width: 100%;
   gap: 15px;
   flex-direction: column;
   display: flex;
