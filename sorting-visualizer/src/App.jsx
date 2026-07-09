@@ -5,6 +5,7 @@ import { selectionSort } from "./algorithms/selectionSort";
 import { insertionSort } from "./algorithms/insertionSort";
 import { mergeSort } from "./algorithms/mergeSort";
 import { quickSort } from "./algorithms/quickSort";
+import { heapSort } from "./algorithms/heapSort";
 import "./App.css";
 
 const App = () => {
@@ -75,6 +76,10 @@ const App = () => {
 
     if (algorithm === "Quick Sort") {
       animations = quickSort(targetArray);
+    }
+
+    if (algorithm === "Heap Sort") {
+      animations = heapSort(targetArray);
     }
 
     if (animations.length === 0) return;
