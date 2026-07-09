@@ -4,6 +4,7 @@ import { bubbleSort } from "./algorithms/bubbleSort";
 import { selectionSort } from "./algorithms/selectionSort";
 import { insertionSort } from "./algorithms/insertionSort";
 import { mergeSort } from "./algorithms/mergeSort";
+import { quickSort } from "./algorithms/quickSort";
 import "./App.css";
 
 const App = () => {
@@ -70,6 +71,10 @@ const App = () => {
 
     if (algorithm === "Merge Sort") {
       animations = mergeSort(targetArray);
+    }
+
+    if (algorithm === "Quick Sort") {
+      animations = quickSort(targetArray);
     }
 
     if (animations.length === 0) return;
