@@ -20,7 +20,7 @@ Each algorithm has its own visualization and color theme.
 - React
 - JavaScript
 - Vite
-- CSS3
+- CSS
 
 # Motivation
 
