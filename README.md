@@ -18,7 +18,7 @@ Each algorithm has its own visualization and color theme.
 ## Technologies
 
 - React
-- JavaScript (ES6+)
+- JavaScript
 - Vite
 - CSS3
 
