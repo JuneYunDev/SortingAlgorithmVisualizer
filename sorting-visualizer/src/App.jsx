@@ -11,8 +11,8 @@ import "./App.css";
 const App = () => {
   //States
   const [array, setArray] = useState([]);
-  const [arraySize, setArraySize] = useState(25);
-  const [algorithm, setAlgorithm] = useState("Bubble sort");
+  const [arraySize, setArraySize] = useState("");
+  const [algorithm, setAlgorithm] = useState("");
   const [hoveredAlgorithm, setHoveredAlgorithm] = useState(null);
   const [isSorting, setIsSorting] = useState(false);
   const [currentPage, setCurrentPage] = useState("home");
@@ -21,9 +21,8 @@ const App = () => {
   const [animationSpeed, setAnimationSpeed] = useState(100);
   const [speedLabel, setSpeedLabel] = useState("x1");
   const animationSpeedRef = useRef(animationSpeed);
-  const currentAlgorithm = hoveredAlgorithm
-    ? algorithmInfo[hoveredAlgorithm]
-    : null;
+  const currentAlgorithm =
+    algorithmInfo[hoveredAlgorithm] ?? algorithmInfo.default;
 
   //Event Handlers
   const sleep = (ms) => {
@@ -121,6 +120,11 @@ const App = () => {
   };
 
   const handleGoClick = () => {
+    if (!arraySize || !algorithm) {
+      alert("Please enter array size and select a sorting algorithm");
+      return;
+    }
+
     const newArray = generateArray();
 
     if (!newArray) return;
@@ -159,26 +163,20 @@ const App = () => {
             <section
               className="selected-card"
               style={{
-                backgroundColor: currentAlgorithm?.color || "#FFD97D",
+                backgroundColor: currentAlgorithm.color,
               }}
             >
-              {currentAlgorithm ? (
-                <>
-                  <div className="algorithm-icon">{currentAlgorithm.image}</div>
-
-                  <h2>{currentAlgorithm.title}</h2>
-                </>
-              ) : (
-                <>
-                  <div className="algorithm-icon">⚙️</div>
-
-                  <h2>
-                    Sorting
-                    <br />
-                    Algorithm
-                  </h2>
-                </>
+              {currentAlgorithm.image && (
+                <img
+                  className="algorithm-image"
+                  src={currentAlgorithm.image}
+                  alt={currentAlgorithm.title}
+                />
               )}
+
+              <h2 style={{ whiteSpace: "pre-line" }}>
+                {currentAlgorithm.title}
+              </h2>
             </section>
 
             <section className="array-card">
@@ -191,6 +189,7 @@ const App = () => {
                   min="5"
                   max="100"
                   value={arraySize}
+                  placeholder="Enter array size"
                   onChange={(event) => setArraySize(event.target.value)}
                 />
                 <button onClick={handleGoClick}>GO</button>
