@@ -1,16 +1,40 @@
-# React + Vite
+# Sorting Algorithm Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web application that visualizes how different sorting algorithms work through real-time animations.
 
-Currently, two official plugins are available:
+This project was built to deepen my understanding of sorting algorithms, React state management, asynchronous animations, and algorithm visualization.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# Implemented Algorithms
 
-## React Compiler
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
+- Heap Sort
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Each algorithm has its own visualization and color theme.
 
-## Expanding the ESLint configuration
+## Technologies
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- JavaScript (ES6+)
+- Vite
+- CSS3
+
+# Motivation
+
+While studying sorting algorithms, I found it difficult to fully understand how each algorithm actually worked by only reading code or diagrams. Although I understood the logic, it was challenging to visualize how elements moved during the sorting process.
+
+To solve this, I built an interactive sorting algorithm visualizer that allows users to see every comparison, swap, and completed element in real time. Developing this project not only strengthened my understanding of sorting algorithms but also gave me hands-on experience with React, asynchronous animations, and state management.
+
+Throughout this project, I implemented each sorting algorithm from scratch instead of relying on existing libraries, allowing me to gain a much deeper understanding of how different algorithms operate and compare with one another.
+
+# Author
+
+**June Yun**
+
+Junior Software Developer
+
+GitHub:
+https://github.com/JuneYunDev
