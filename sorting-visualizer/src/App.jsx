@@ -140,6 +140,8 @@ const App = () => {
     { label: "x3", value: 25 },
   ];
 
+  const barWidth = Math.max(10, Math.floor(900 / array.length));
+
   //HTML
   return (
     <main className="app">
@@ -226,12 +228,15 @@ const App = () => {
       ) : (
         //Visualizer Page
         <section className="visualizer-page">
-          <header className="visualizer-header">
+          <header
+            className="visualizer-header"
+            style={{ backgroundColor: algorithmInfo[algorithm].color }}
+          >
             <button
-              className="back-button"
+              className="visualizer-icon-button"
               onClick={() => setCurrentPage("home")}
             >
-              ← Back
+              ↩
             </button>
 
             <h1>{algorithm}</h1>
@@ -240,27 +245,39 @@ const App = () => {
               className="start-button"
               onClick={() => startSorting(array)}
               disabled={isSorting}
+              style={{
+                color: currentAlgorithm.color,
+              }}
             >
               {isSorting ? "Sorting" : "Start"}
             </button>
           </header>
-          <div className="speed-buttons">
-            {speedOptions.map((speed) => (
-              <button
-                key={speed.label}
-                className={`speed-button ${
-                  speedLabel === speed.label ? "active" : ""
-                }`}
-                onClick={() => {
-                  setAnimationSpeed(speed.value);
-                  setSpeedLabel(speed.label);
-                  animationSpeedRef.current = speed.value;
-                }}
-              >
-                {speed.label}
-              </button>
-            ))}
-          </div>
+          <section className="speed-buttons">
+            {speedOptions.map((speed) => {
+              const selected = speedLabel === speed.label;
+
+              return (
+                <button
+                  key={speed.label}
+                  className="speed-button"
+                  style={{
+                    backgroundColor: selected
+                      ? currentAlgorithm.color
+                      : "#ffffff",
+
+                    color: selected ? "#ffffff" : currentAlgorithm.color,
+                  }}
+                  onClick={() => {
+                    setAnimationSpeed(speed.value);
+                    setSpeedLabel(speed.label);
+                    animationSpeedRef.current = speed.value;
+                  }}
+                >
+                  {speed.label}
+                </button>
+              );
+            })}
+          </section>
           <section className="bar-container">
             {array.map((item, index) => {
               const isActive = activeIndices.includes(index);
@@ -273,7 +290,8 @@ const App = () => {
                     isSorted ? "sorted" : ""
                   }`}
                   style={{
-                    height: `${item.value * 4}px`,
+                    height: `${item.value * 5}px`,
+                    width: `${barWidth}px`,
                   }}
                 >
                   {array.length <= 100 ? item.value : ""}

@@ -240,46 +240,66 @@ body {
 .visualizer-page {
   min-height: 100vh;
   background: #f7f7f7;
-  padding: 40px 80px;
 }
 
 .visualizer-header {
-  display: flex;
-  justify-content: space-between;
+  height: 108px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  margin-bottom: 48px;
+  padding: 0 28px;
 }
 
 .visualizer-header h1 {
-  color: #f3805c;
-  font-size: 48px;
+  color: white;
+  font-size: 54px;
+  margin: 0;
 }
 
-.back-button,
-.start-button {
+.visualizer-icon-button {
   border: none;
-  background: #f3805c;
-  color: white;
-  padding: 14px 28px;
-  font-size: 22px;
-  font-weight: 700;
+  background: transparent;
+
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   cursor: pointer;
-  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+  color: white;
+
+  font-size: 54px;
+  padding: 0;
+}
+
+.start-button {
+  justify-self: end;
+  width: 200px;
+  height: 58px;
+  border: none;
+  background: white;
+  font-size: 32px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 }
 
 .bar-container {
-  height: 560px;
+  width: 82%;
+  height: 540px;
+  margin: 0 auto;
+  background: white;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 6px;
-  padding: 32px;
-  background: white;
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.25);
+  gap: 3px;
+  padding: 36px 44px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
 }
 
 .array-bar {
-  width: 24px;
   min-width: 4px;
   background: #686878;
   color: white;
@@ -304,19 +324,19 @@ body {
 .speed-buttons {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 28px;
+  gap: 88px;
+  margin: 45px 0;
 }
 
 .speed-button {
+  width: 96px;
+  height: 58px;
   border: none;
   background: white;
-  color: #f3805c;
-  font-size: 22px;
+  font-size: 32px;
   font-weight: 800;
-  padding: 10px 22px;
   cursor: pointer;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
 }
 
 .speed-button.active {
