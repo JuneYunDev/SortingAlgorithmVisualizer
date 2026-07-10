@@ -46,6 +46,26 @@ The application was first designed in Figma before implementation. This helped m
 |--------------|----------------------|
 | <img width="1280" height="832" alt="Visualizer Page" src="https://github.com/user-attachments/assets/a8299cdd-0536-4a54-802b-1f2e060c5c29" /> | <img width="1920" height="1080" alt="스크린샷 2026-07-09 214606" src="https://github.com/user-attachments/assets/7b98f4ff-d4c3-458a-94dd-9a8cb650f0f9" />|
 
+## Screen Shots
+
+### Home Page - Algorithm Lists
+<img width="500" height="281" alt="HomePage" src="https://github.com/user-attachments/assets/29ce0583-a167-48b7-b156-d9abd23493c3" />
+
+### Visualizer Page
+#### Bubble Sort
+<img width="360" height="202" alt="Bubble" src="https://github.com/user-attachments/assets/19fdfc17-8a4d-4443-8a5f-717518d235c7" />
+#### Selection Sort
+<img width="360" height="202" alt="Selection" src="https://github.com/user-attachments/assets/4156a98c-da4c-42ab-abbc-679e6e4ac6b0" />
+#### Insertion Sort
+<img width="360" height="202" alt="Insertion" src="https://github.com/user-attachments/assets/6b34f38d-1df6-4bd7-85d1-006b909e0cd6" />
+#### Merge Sort
+<img width="360" height="202" alt="Merge" src="https://github.com/user-attachments/assets/ee97c39c-2b3f-4440-9cf1-4be315511351" />
+#### Quick Sort
+<img width="360" height="202" alt="Quick" src="https://github.com/user-attachments/assets/b5070262-1018-463f-bf72-b2656d08b565" />
+#### Heap Sort
+<img width="360" height="202" alt="Heap" src="https://github.com/user-attachments/assets/34c33733-8914-49b2-bfd2-727469521e8d" />
+
+
 ## Author
 
 **June Yun**
